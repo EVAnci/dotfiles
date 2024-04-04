@@ -1,0 +1,30 @@
+[cursor]
+style = "Beam"
+
+[window]
+startup_mode = "Maximized"
+padding = {x=20,y=20}
+decorations = "None"
+decorations_theme_variant = "Dark"
+opacity = 0.9
+
+[font]
+normal = {family = "JetBrainsMonoNL Nerd Font", style = "Thin Italic"}
+bold = {family = "JetBrainsMonoNL Nerd Font", style = "ExtraBold Italic"}
+italic = {family = "JetBrainsMonoNL Nerd Font", style = "SemiBold Italic"}
+
+[colors.primary]
+background = "#070609"
+foreground = "#efefef"
+
+[colors.normal]
+black = "#000000"
+red = "#cd001a"
+green = "#78be21"
+blue = "#587ede"
+magenta = "#d53f77"
+cyan = "#00bce3"
+white = "#e4e4e4"
+
+[mouse]
+hide_when_typing = true
