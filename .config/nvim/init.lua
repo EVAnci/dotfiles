@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 require("plugins")
 require("settings")
 require("colorscheme")
+require("config.cmp")
 
 -- Configuración de barra de estado
 require("lualine").setup()

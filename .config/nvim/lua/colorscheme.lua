@@ -17,7 +17,7 @@ treesitter.setup({
     enable = true,
     additional_vim_regex_highlighting = false,
     disable = function(lang, buf)
-      -- Aquí se pueden elegir algunos lenguajes especificos donde esta configuración no es necesaria
+      -- Aquí se pueden elegir algunos lenguajes específicos donde esta configuración no es necesaria
       return false
     end,
   },
