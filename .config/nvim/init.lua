@@ -27,3 +27,6 @@ require("nvim-tree").setup()
 local lspconfig = require("lspconfig")
 lspconfig.pyright.setup{}
 lspconfig.texlab.setup{}
+
+-- Carga de Configuración de lsp (pyright, texlab)
+require("config.lsp")

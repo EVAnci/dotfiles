@@ -11,3 +11,5 @@ vim.o.mouse = "a"                 -- Activar mouse
 vim.o.tabstop = 2                 -- Cantidad de caracteres que representa \t (tab)
 vim.opt.shiftwidth = 2            -- Cantidad de espacios para un nivel de identación
 vim.opt.expandtab = true          -- Tabular inserta espacios no \t
+
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
