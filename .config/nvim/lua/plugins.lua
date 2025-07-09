@@ -46,5 +46,8 @@ require("lazy").setup({
   { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } }
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
+  -- Git sign (mostrar cambios de git)
+  { "lewis6991/gitsigns.nvim" }
 })

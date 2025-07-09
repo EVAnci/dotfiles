@@ -17,6 +17,11 @@ require("settings")
 require("colorscheme")
 require("config.cmp")
 
+-- Eliminar warnings de dependencias
+-- let g:loaded_perl_provider = 0
+-- let g:loaded_python3_provider = 0
+-- let g:loaded_npm_provider = 0
+
 -- Configuración de barra de estado
 require("lualine").setup()
 
@@ -28,11 +33,14 @@ local lspconfig = require("lspconfig")
 lspconfig.pyright.setup{}
 lspconfig.texlab.setup{}
 
--- Carga de Configuración de lsp (pyright, texlab)
+-- Configuración de Configuración de lsp (pyright, texlab)
 require("config.lsp")
 
--- Carga de auto pair (corchetes, parentesis, comillas)
+-- Configuración de auto pair (corchetes, parentesis, comillas)
 require("config.autopairs")
+
+-- Configuración de git_signs
+require("config.git_signs")
 
 -- Símbolos LaTeX
 vim.keymap.set("n", "<leader>ls", function()
