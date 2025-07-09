@@ -30,3 +30,11 @@ lspconfig.texlab.setup{}
 
 -- Carga de Configuración de lsp (pyright, texlab)
 require("config.lsp")
+
+-- Carga de auto pair (corchetes, parentesis, comillas)
+require("config.autopairs")
+
+-- Símbolos LaTeX
+vim.keymap.set("n", "<leader>ls", function()
+  require("config.latex_symbols").show()
+end, { desc = "Insertar símbolo LaTeX" })

@@ -41,4 +41,10 @@ require("lazy").setup({
 
   -- Barra de estado elegante
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+
+  -- Auto pairing
+  { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+
+  -- Telescope
+  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } }
 })
