@@ -1,20 +1,57 @@
-
--- ~/.config/nvim/lua/config/latex_symbols.lua
-
-
 local symbols = {
-  -- Letras griegas
+  -- Letras griegas minúsculas
   { symbol = "α", latex = "\\alpha" },
   { symbol = "β", latex = "\\beta" },
-  { symbol = "γ", latex = "\\gamma" },
-  { symbol = "Δ", latex = "\\Delta" },
-  { symbol = "ε", latex = "\\varepsilon" },
+  { symbol = "𝛾", latex = "\\gamma" },
+  { symbol = "𝜹", latex = "\\delta" },
+  { symbol = "𝝐", latex = "\\epsilon" },
+  { symbol = "𝜻", latex = "\\zeta" },
+  { symbol = "𝜼", latex = "\\eta" },
   { symbol = "θ", latex = "\\theta" },
+  { symbol = "𝜾", latex = "\\iota" },
+  { symbol = "𝜿", latex = "\\kappa" },
   { symbol = "λ", latex = "\\lambda" },
   { symbol = "μ", latex = "\\mu" },
+  { symbol = "𝝂", latex = "\\nu" },
+  { symbol = "𝝃", latex = "\\xi" },
   { symbol = "π", latex = "\\pi" },
-  { symbol = "Ω", latex = "\\Omega" },
+  { symbol = "𝞺", latex = "\\rho" },
+  { symbol = "𝜎", latex = "\\sigma" },
+  { symbol = "𝜏", latex = "\\tau" },
+  { symbol = "𝜐", latex = "\\upsilon" },
+  { symbol = "𝜙", latex = "\\phi" },
+  { symbol = "𝜘", latex = "\\chi" },
+  { symbol = "𝜓", latex = "\\psi" },
+  { symbol = "𝜔", latex = "\\omega" },
+  
+  -- Variables griegas minúsculas
+  { symbol = "ε", latex = "\\varepsilon" },
+  { symbol = "𝜗", latex = "\\vartheta" },
+  { symbol = "𝜛", latex = "\\varpi" },
+  { symbol = "𝜚", latex = "\\varrho" },
+  { symbol = "𝜑", latex = "\\varphi" },
 
+  -- Letras griegas mayúsculas
+  { symbol = "𝚪", latex = "\\Gamma" },
+  { symbol = "𝚫", latex = "\\Delta" },
+  { symbol = "𝚯", latex = "\\Theta" },
+  { symbol = "𝚲", latex = "\\Lambda" },
+  { symbol = "𝚵", latex = "\\Xi" },
+  { symbol = "𝚷", latex = "\\Pi" },
+  { symbol = "𝚺", latex = "\\Sigma" },
+  { symbol = "𝚼", latex = "\\Upsilon" },
+  { symbol = "𝚽", latex = "\\Phi" },
+
+  -- Variables griegas mayúsculas
+  { symbol = "𝛤", latex = "\\varGamma" },
+  { symbol = "𝛥", latex = "\\varDelta" },
+  { symbol = "𝛩", latex = "\\varTheta" },
+  { symbol = "𝛬", latex = "\\varLambda" },
+  { symbol = "𝛯", latex = "\\varXi" },
+  { symbol = "𝛱", latex = "\\varPi" },
+  { symbol = "𝛴", latex = "\\varSigma" },
+  { symbol = "𝛶", latex = "\\varUpsilon" },
+  { symbol = "𝛷", latex = "\\varPhi" },
   -- Operadores matemáticos
   { symbol = "∑", latex = "\\sum" },
   { symbol = "∏", latex = "\\prod" },
