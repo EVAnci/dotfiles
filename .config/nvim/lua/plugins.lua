@@ -49,5 +49,8 @@ require("lazy").setup({
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
   -- Git sign (mostrar cambios de git)
-  { "lewis6991/gitsigns.nvim" }
+  { "lewis6991/gitsigns.nvim" },
+
+  -- Bufferline (pestañas)
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 })

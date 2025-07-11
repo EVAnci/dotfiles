@@ -11,7 +11,8 @@ set.spelllang = "es"            -- Ortografía en español {"es", "en"} se puede
 set.spell = true                -- Activar corrección ortográfica
 set.mouse = "a"                 -- Activar ratón
 set.tabstop = 2                 -- Cantidad de caracteres que representa \t (tab)
-set.shiftwidth = 2            -- Cantidad de espacios para un nivel de indentación
-set.expandtab = true          -- Tabular inserta espacios no \t
+set.shiftwidth = 2              -- Cantidad de espacios para un nivel de indentación
+set.expandtab = true            -- Tabular inserta espacios no \t
+set.termguicolors = true        -- Requerido por bufferline 
 
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })

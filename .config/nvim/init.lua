@@ -42,6 +42,9 @@ require("config.autopairs")
 -- Configuración de git_signs
 require("config.git_signs")
 
+-- Configuración recomendada de Bufferline
+require("config.bufferline")
+
 -- Símbolos LaTeX
 vim.keymap.set("n", "<leader>ls", function()
   require("config.latex_symbols").show()
