@@ -41,6 +41,9 @@ local symbols = {
   { symbol = "𝚺", latex = "\\Sigma" },
   { symbol = "𝚼", latex = "\\Upsilon" },
   { symbol = "𝚽", latex = "\\Phi" },
+  { symbol = "𝛘", latex = "\\Chi" },
+  { symbol = "𝛙", latex = "\\Psi" },
+  { symbol = "𝛀", latex = "\\Omega" },
 
   -- Variables griegas mayúsculas
   { symbol = "𝛤", latex = "\\varGamma" },
@@ -52,6 +55,10 @@ local symbols = {
   { symbol = "𝛴", latex = "\\varSigma" },
   { symbol = "𝛶", latex = "\\varUpsilon" },
   { symbol = "𝛷", latex = "\\varPhi" },
+  { symbol = "𝜓", latex = "\\varPsi" },
+  { symbol = "𝛺", latex = "\\varOmega" },
+
+
   -- Operadores matemáticos
   { symbol = "∑", latex = "\\sum" },
   { symbol = "∏", latex = "\\prod" },
