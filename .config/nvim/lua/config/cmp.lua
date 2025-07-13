@@ -44,6 +44,15 @@ cmp.setup({
     { name = "path" },
   }),
 
+  -- Evitar sugerencias del buffer de archivo en archivos latex
+  cmp.setup.filetype('tex', {
+    sources = cmp.config.sources({
+      { name = 'luasnip' },
+      { name = 'nvim_lsp' },
+      -- no agregar { name = 'buffer' }
+    }),
+  }),
+
   -- Ventanas flotantes de completado
   window = {
     completion = cmp.config.window.bordered(),

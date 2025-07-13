@@ -14,5 +14,13 @@ set.tabstop = 2                 -- Cantidad de caracteres que representa \t (tab
 set.shiftwidth = 2              -- Cantidad de espacios para un nivel de indentación
 set.expandtab = true            -- Tabular inserta espacios no \t
 set.termguicolors = true        -- Requerido por bufferline 
+set.wrap = true
+set.linebreak = true            -- Wrap en espacios, no a mitad de palabra
+set.breakindent = true          -- Indenta la línea envuelta
+set.showbreak = '↪ '            -- Indicador visual de línea envuelta (opcional)
 
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
+
+-- Mover con j/k en vez de saltar a toda la línea lógica:
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
