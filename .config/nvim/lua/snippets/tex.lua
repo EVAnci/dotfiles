@@ -17,4 +17,10 @@ return {
     i(4, "etiqueta"),
     t({ "}", "\\end{figure}" }),
   }),
+
+  s("align", {
+    t({ "\\begin{align*}", "  " }),
+    i(1, "equation"),
+    t({ "", "\\end{align*}" }),
+  }),
 }
