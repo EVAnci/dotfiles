@@ -29,4 +29,10 @@ return {
     i(1,"expr"),
     t({ "\\right\\rvert" }),
   }),
+
+  s("pesc", {
+    t({ "\\left\\langle " }),
+    i(1,"expr"),
+    t({ "\\right\\rangle" }),
+  }),
 }
