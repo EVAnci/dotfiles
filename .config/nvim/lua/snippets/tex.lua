@@ -23,4 +23,10 @@ return {
     i(1, "equation"),
     t({ "", "\\end{align*}" }),
   }),
+
+  s("abs", {
+    t({ "\\left\\lvert " }),
+    i(1,"expr"),
+    t({ "\\right\\rvert" }),
+  }),
 }
