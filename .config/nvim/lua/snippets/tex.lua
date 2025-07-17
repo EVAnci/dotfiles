@@ -4,7 +4,7 @@ local t = ls.text_node
 local i = ls.insert_node
 
 return {
-  s("fig", {
+  s("\\fig", {
     t({ "\\begin{figure}[ht]", 
     "  \\centering", 
     "  \\includegraphics[width=" }),
@@ -18,19 +18,19 @@ return {
     t({ "}", "\\end{figure}" }),
   }),
 
-  s("align", {
+  s("\\align", {
     t({ "\\begin{align*}", "  " }),
     i(1, "equation"),
     t({ "", "\\end{align*}" }),
   }),
 
-  s("abs", {
+  s("\\abs", {
     t({ "\\left\\lvert " }),
     i(1,"expr"),
     t({ "\\right\\rvert" }),
   }),
 
-  s("pesc", {
+  s("\\pesc", {
     t({ "\\left\\langle " }),
     i(1,"expr"),
     t({ "\\right\\rangle" }),
