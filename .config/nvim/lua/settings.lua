@@ -21,6 +21,9 @@ set.showbreak = '↪ '            -- Indicador visual de línea envuelta (opcion
 
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
 
+vim.keymap.set("i", "<C-e>", "<C-o>$", { desc = "Ir al final de la línea en modo insertar" })
+
+
 -- Mover con j/k en vez de saltar a toda la línea lógica:
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
