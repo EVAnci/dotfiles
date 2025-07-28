@@ -24,3 +24,10 @@ vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' }
 -- Mover con j/k en vez de saltar a toda la línea lógica:
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+
+-- Esta función me permite convertir una linea normal como 3 4 5 en $3$ & $4$ & $5$.
+vim.api.nvim_create_user_command("LatexRow", function()
+  local line = vim.fn.getline(".")
+  local transformed = line:gsub("([^%s]+)", "\\$%1\\$"):gsub("%s+", " & ") .. " \\\\"
+  vim.fn.setline(".", transformed)
+end, {})
