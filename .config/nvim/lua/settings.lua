@@ -28,6 +28,10 @@ vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 -- Esta función me permite convertir una linea normal como 3 4 5 en $3$ & $4$ & $5$.
 vim.api.nvim_create_user_command("LatexRow", function()
   local line = vim.fn.getline(".")
-  local transformed = line:gsub("([^%s]+)", "\\$%1\\$"):gsub("%s+", " & ") .. " \\\\"
+  local result = {}
+  for word in line:gmatch("%S+") do
+    table.insert(result, "$" .. word .. "$")
+  end
+  local transformed = table.concat(result, " & ") .. " \\\\"
   vim.fn.setline(".", transformed)
 end, {})
