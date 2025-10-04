@@ -17,11 +17,6 @@ require("settings")
 require("colorscheme")
 require("config.cmp")
 
--- Eliminar warnings de dependencias
--- let g:loaded_perl_provider = 0
--- let g:loaded_python3_provider = 0
--- let g:loaded_npm_provider = 0
-
 -- Configuración de barra de estado
 require("lualine").setup()
 
@@ -29,12 +24,22 @@ require("lualine").setup()
 require("nvim-tree").setup()
 
 -- Configuración de LSP para Python y Latex
-local lspconfig = require("lspconfig")
-lspconfig.pyright.setup{}
-lspconfig.texlab.setup{}
+vim.lsp.config('pyright', {
+  filetypes = { 'py' }
+})
+vim.lsp.config('texlab', {
+  filetype = { 'tex' }
+})
+vim.lsp.enable({'pyright', 'texlab'})
+
+
+-- The following old configuration is deprecated. File ./config/lsp.lua is ignored
+-- local lspconfig = require('lspconfig')
+-- lspconfig.pyright.setup{}
+-- lspconfig.texlab.setup{}
 
 -- Configuración de Configuración de lsp (pyright, texlab)
-require("config.lsp")
+-- require("config.lsp")
 
 -- Configuración de auto pair (corchetes, parentesis, comillas)
 require("config.autopairs")
