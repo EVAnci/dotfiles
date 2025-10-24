@@ -1,13 +1,14 @@
 -- Tema
 -- vim.cmd.colorscheme "catppuccin-mocha"
+-- This file isn't used anymore. Must remove 
 
 local theme = require('onedark')
 
 theme.setup({
-  style = 'warm'
+  style = 'warmer'
 })
 
-vim.cmd.colorscheme 'onedark'
+theme.load()
 
 -- Evitar resaltado en comentarios
 local treesitter = require("nvim-treesitter.configs")

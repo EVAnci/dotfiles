@@ -37,6 +37,7 @@ cmp.setup({
     end, { "i", "s" }),
   }),
 
+  -- Fuentes (sources) POR DEFECTO para todos los tipos de archivo
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "luasnip" },
@@ -44,14 +45,20 @@ cmp.setup({
     { name = "path" },
   }),
 
-  -- Evitar sugerencias del buffer de archivo en archivos latex
-  cmp.setup.filetype('tex', {
-    sources = cmp.config.sources({
-      { name = 'luasnip' },
-      { name = 'nvim_lsp' },
-      -- no agregar { name = 'buffer' }
-    }),
-  }),
+  -- La configuración específica por tipo de archivo va aquí DENTRO.
+  filetype = {
+    -- La clave es el tipo de archivo, p.ej. 'tex'
+    ['tex'] = {
+      -- Sobrescribimos las 'sources' solo para archivos 'tex'
+      sources = cmp.config.sources({
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        -- 'buffer' está excluido, tal como querías
+      }),
+    }
+    -- Podrías añadir más aquí, ej: ['python'] = { ... }
+  },
+  
 
   -- Ventanas flotantes de completado
   window = {

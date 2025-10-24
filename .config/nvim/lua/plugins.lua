@@ -1,42 +1,79 @@
--- Este bloque le dice a `lazy.nvim` qué plugins debe instalar y cargar. Es el catálogo de plugins
--- que usará la configuración de nvim
+-- How to add a plugin? Easy, search for the plugin on a web browser. Then, usually 
+-- pluggins have the way to install it with lazy. But in case is not shown, 
+-- the below text is the way.
 --
--- Cada entrada es una tabla lua con:
--- * El nombre del repositorio GitHub ("autor/plugin")
--- * Opcionalmente, opciones como:
---   * name : nombre interno
---   * priority : orden de carga
---   * dependecies : otros plugins que necesita
---   * config = function() ... end : configuración personalizada del pugin
+-- This block tells 'lazy' (who is the plugin manager) which plugins has to install and load.
+-- This file is kinda plugin catalog of nvim config.
 --
--- En este bloque no se configuran los plugins aún, simplemente los declara para que se descarguen
--- y gestionen.
+-- Each entry is a lua table:
+-- * The name of the repo (GitHub) -> ('user/plugin')
+-- * Optionally, options like:
+--    * name : (like for the theme)
+--    * priority : load order (higher = later)
+--    * dependecies : other plugins necessary for the plugin to work
+--    * config = function() ... end : the configuration of the plugin
 
+-- Here start the plugin setup
 require("lazy").setup({
-  -- Tema visual
-  -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "navarasu/onedark.nvim", priority = 1000 },
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
-  -- Explorador de archivos
-  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  -- Hightlighting enhancement (depending on lang)
+  {
+    "nvim-treesitter/nvim-treesitter", 
+    branch = 'master', 
+    lazy = false, 
+    build = ":TSUpdate"
+  },
 
-  -- Autocompletado y snippets
-  { "hrsh7th/nvim-cmp" },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer" },
-  { "hrsh7th/cmp-path" },
-  { "hrsh7th/cmp-cmdline" },
-  { "L3MON4D3/LuaSnip" },
-  { "saadparwaiz1/cmp_luasnip" },
+  -- File explorer
+  { 
+    "nvim-tree/nvim-tree.lua", 
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup()
+    end 
+  },
 
-  -- LSP (Lenguaje para python, latex, etc.
-  { "neovim/nvim-lspconfig" },
+  -- A completion engine plugin 
+  { 
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
+    config = function() 
+      require("config.cmp")
+    end 
+  },
 
-  -- Soporte para latex
+  -- LSP (Language Server Protocol)
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    config = function()
+      local lspcfg = require('config.lsp')
+      
+      vim.lsp.config('pyright', {
+        filetypes = { 'py' },
+        on_attach = lspcfg.on_attach
+      })
+      vim.lsp.config('texlab', {
+        filetype = { 'tex' },
+        on_attach = lspcfg.on_attach
+      })
+      
+      vim.lsp.enable({'pyright','texlab'})
+    end
+  },
+
+  -- filetype and syntax plugin for LaTeX files. 
+  -- For more info read .config/nvim/docs/plugins/VimTeX.md
    {
     "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
+    lazy = false,
     -- tag = "v2.15", -- uncomment to pin to a specific release
     -- init = function()
     --   -- VimTeX configuration goes here, e.g.
@@ -44,21 +81,72 @@ require("lazy").setup({
     -- end
   },
 
-  -- Comentarios y corrección ortográfica
-  { "tpope/vim-commentary" },
+  -- Plugin for comment multiple lines with gc
+  { 
+    "tpope/vim-commentary" 
+  },
 
-  -- Barra de estado elegante
-  { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
+  -- The bottom status bar enhanced
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup()
+    end
+  },
+
+  -- A file explorer for neovim
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
 
   -- Auto pairing
-  { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("config.autopairs")
+    end
+  },
 
   -- Telescope
-  { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+  { 
+    "nvim-telescope/telescope.nvim", 
+    dependencies = { "nvim-lua/plenary.nvim" } 
+  },
 
   -- Git sign (mostrar cambios de git)
-  { "lewis6991/gitsigns.nvim" },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("config.git_signs")
+    end
+  },
 
-  -- Bufferline (pestañas)
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
+  -- Bufferline (upper tabs)
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("config.bufferline")
+    end
+  },
+
+  -- The most important config: the visual theme xD
+  { 
+    "navarasu/onedark.nvim", 
+    priority = 1000,
+    config = function()
+      require("colorscheme")
+    end 
+  }
 })
