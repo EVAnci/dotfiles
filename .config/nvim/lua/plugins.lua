@@ -57,11 +57,9 @@ require("lazy").setup({
       local lspcfg = require('config.lsp')
       
       vim.lsp.config('pyright', {
-        filetypes = { 'py' },
         on_attach = lspcfg.on_attach
       })
       vim.lsp.config('texlab', {
-        filetype = { 'tex' },
         on_attach = lspcfg.on_attach
       })
       
