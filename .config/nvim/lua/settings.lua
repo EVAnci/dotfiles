@@ -8,7 +8,6 @@ set.number = true               -- Mostrar número de linea
 set.relativenumber = true       -- Mostrar números relativos
 set.termguicolors = true        -- Activar colores mejorados
 set.spelllang = "es"            -- Ortografía en español {"es", "en"} se pueden agregar más
-set.spell = true                -- Activar corrección ortográfica
 set.mouse = "n"                 -- Activar ratón (normal mode)
 set.tabstop = 2                 -- Cantidad de caracteres que representa \t (tab)
 set.shiftwidth = 2              -- Cantidad de espacios para un nivel de indentación
