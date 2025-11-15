@@ -96,3 +96,11 @@ alias ls='exa --group-directories-first'
 alias gst='git status'
 
 resumen="/home/elio/Documentos/UM/2do/Calculo IV/Resumen/"
+
+stophdd() {
+  for hdd in {"/dev/sdb","/dev/sdc"} ; do 
+    echo "[+] Power down signal to $hdd"
+    sudo hdparm -Y $hdd
+  done
+  unset hdd
+}
