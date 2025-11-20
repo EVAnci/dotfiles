@@ -98,9 +98,21 @@ alias gst='git status'
 resumen="/home/elio/Documentos/UM/2do/Calculo IV/Resumen/"
 
 stophdd() {
+  echo "[+] Issue sleep command to /dev/sdb and /dev/sdc HDDs. (Requires root privileges)"
+  lsblk
+  sudo echo "[+] Issuing sleep command to /dev/sdb and /dev/sdc HDDs."
   for hdd in {"/dev/sdb","/dev/sdc"} ; do 
-    echo "[+] Power down signal to $hdd"
+    echo -n "[+] Power down signal to $hdd"
     sudo hdparm -Y $hdd
+  done
+  unset hdd
+  echo -n "[+] Showing device status..."
+  statushdd
+}
+
+statushdd() {
+  for hdd in {"/dev/sdb","/dev/sdc"} ; do 
+    sudo hdparm -C $hdd
   done
   unset hdd
 }
