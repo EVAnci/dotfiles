@@ -71,6 +71,11 @@ PROMPT='$(clock_prompt)$(virtualenv_prompt)${_BOLD_GRAY}%n@%m${_RESET} ${_BOLD_T
 #  Fin del tema
 # ==========================================
 
+# Para aplicaciones Qt 5
+export QT_QPA_PLATFORMTHEME=qt5ct
+# Para aplicaciones Qt 6
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 # Historial incremental según lo escrito
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -95,7 +100,7 @@ alias cat=bat
 alias ls='exa --group-directories-first'
 alias gst='git status'
 
-resumen="/home/elio/Documentos/UM/2do/Calculo IV/Resumen/"
+resumen="/home/elio/Documentos/UM/3ro/Análisis Numérico/Resumen/"
 
 stophdd() {
   echo "[+] Issue sleep command to /dev/sdb and /dev/sdc HDDs. (Requires root privileges)"
