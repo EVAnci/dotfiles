@@ -54,15 +54,14 @@ sudo reflector --latest 60 --sort rate --fastest 15 --threads 12 --save /etc/pac
 
 # First install dkms packege
 sudo pacman -S dkms linux-headers --needed
-paru -S nvidia-580xx-dkms
-sudo pacman -S nvidia-utils nvidia-settings # blacklist nouveau
+paru -S nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings opencl-nvidia-580xx
 
 # Configure GRUB timeout and dkms start
 grub_timeout=120
 kernel_parameters="quiet loglevel=3 nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"
 sed -i.bkp "s/^GRUB_TIMEOUT=[^\"]*/GRUB_TIMEOUT=$grub_timeout/" /etc/default/grub
 sed -i "s/^GRUB_CMDLINE_LINUX_DEFAULT=[^\"]*/GRUB_CMDLINE_LINUX_DEFAULT=$kernel_parameters/" /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Configure mkinitcpio modules
 modules="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
