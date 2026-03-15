@@ -15,3 +15,9 @@ vim.api.nvim_create_user_command("LatexFixAll", function()
   vim.cmd("LatexFixDisplay")
   vim.cmd("LatexFixInline")
 end, {})
+
+vim.api.nvim_create_user_command("LatexFixQuotes", function()
+  vim.cmd([[
+    %s/"\([^"]*\)"/``\1''/g   
+  ]])
+end, {})

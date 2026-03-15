@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This file is intended to be a fast way to config
-# my daily distro (Desktop)
+# my daily arch distro
 
 confirm() {
   local msg="$1"

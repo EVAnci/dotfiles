@@ -60,9 +60,6 @@ ret_status() {
 # --- Actualizar información antes de mostrar el prompt
 precmd() { vcs_info }
 
-# --- Guardar historial automáticamente
-preexec() { print -s "$1" }
-
 # --- Prompt final
 # See: https://zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html#Shell-state
 PROMPT='$(clock_prompt)$(virtualenv_prompt)${_BOLD_GRAY}%n@%m${_RESET} ${_BOLD_TEAL}%1~${_RESET} ${vcs_info_msg_0_}$(ret_status)'
@@ -96,11 +93,16 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Enables autocompletion in sudo commands
 zstyle ':completion::complete:*' gain-privileges 1
 
+# Enable !:<parm> correctly
+setopt BANG_HIST
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
 alias cat=bat
 alias ls='exa --group-directories-first'
 alias gst='git status'
 
-resumen="/home/elio/Documentos/UM/3ro/Análisis Numérico/Resumen/"
+cuarto="/home/elio/Documentos/UM/4to"
 
 stophdd() {
   echo "[+] Issue sleep command to /dev/sdb and /dev/sdc HDDs. (Requires root privileges)"
