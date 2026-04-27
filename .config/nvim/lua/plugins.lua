@@ -17,12 +17,12 @@
 require("lazy").setup({
 
   -- Hightlighting enhancement (depending on lang)
-  {
-    "nvim-treesitter/nvim-treesitter", 
-    branch = 'master', 
-    lazy = false, 
-    build = ":TSUpdate"
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter", 
+  --   branch = 'master', 
+  --   lazy = false, 
+  --   build = ":TSUpdate"
+  -- },
 
   -- File explorer
   { 
