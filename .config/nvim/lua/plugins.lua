@@ -24,14 +24,6 @@ require("lazy").setup({
   --   build = ":TSUpdate"
   -- },
 
-  -- File explorer
-  { 
-    "nvim-tree/nvim-tree.lua", 
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup()
-    end 
-  },
 
   -- A completion engine plugin 
   { 
@@ -96,14 +88,18 @@ require("lazy").setup({
   -- A file explorer for neovim
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
     lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
-    end,
+      require("nvim-tree").setup({
+        git = {
+            enable = true,
+            ignore = false,
+      },
+    })
+    end
   },
 
   -- Auto pairing
