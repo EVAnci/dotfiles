@@ -5,23 +5,13 @@ local i = ls.insert_node
 
 return {
   s("\\fig", {
-    t({ "\\begin{figure}[ht]", 
+    t({ "\\begin{figure}[!ht]", 
     "  \\centering", 
-    "  \\includegraphics[width=" }),
-    i(1, "\\linewidth"),
-    t({ "]{" }),
-    i(2, "ruta/imagen"),
-    t({ "}", "  \\caption{" }),
-    i(3, "Descripción"),
+    t({ "  \\caption{" }),
+    i(1, ""),
     t({ "}", "  \\label{fig:" }),
-    i(4, "etiqueta"),
+    i(2, ""),
     t({ "}", "\\end{figure}" }),
-  }),
-
-  s("\\align", {
-    t({ "\\begin{align*}", "  " }),
-    i(1, "equation"),
-    t({ "", "\\end{align*}" }),
   }),
 
   s("\\abs", {
