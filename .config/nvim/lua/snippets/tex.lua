@@ -6,7 +6,7 @@ local i = ls.insert_node
 return {
   s("\\fig", {
     t({ "\\begin{figure}[!ht]", 
-    "  \\centering", 
+    "  \\centering",}),
     t({ "  \\caption{" }),
     i(1, ""),
     t({ "}", "  \\label{fig:" }),
