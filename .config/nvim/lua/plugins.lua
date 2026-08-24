@@ -19,13 +19,41 @@ require("lazy").setup({
   -- Syntax highlighting and parsers used by render-markdown.nvim
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
+
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "markdown", "markdown_inline" },
-        highlight = { enable = true },
+      local treesitter = require("nvim-treesitter")
+
+      -- Autoinstall missing parsers.
+      treesitter.install({
+        "markdown",
+        "markdown_inline",
+        "lua",
+        "python",
+        "java",
+        "c",
+        "bash",
+        "latex",
+        "json",
+      })
+
+      -- Activate treesitter for this filetype
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "markdown",
+          "lua",
+          "python",
+          "java",
+          "c",
+          "sh",
+          "tex",
+          "json",
+        },
+        callback = function()
+          vim.treesitter.start()
+        end,
       })
     end,
   },
