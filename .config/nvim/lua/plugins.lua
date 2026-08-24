@@ -16,13 +16,51 @@
 -- Here start the plugin setup
 require("lazy").setup({
 
-  -- Hightlighting enhancement (depending on lang)
-  -- {
-  --   "nvim-treesitter/nvim-treesitter", 
-  --   branch = 'master', 
-  --   lazy = false, 
-  --   build = ":TSUpdate"
-  -- },
+  -- Syntax highlighting and parsers used by render-markdown.nvim
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "markdown", "markdown_inline" },
+        highlight = { enable = true },
+      })
+    end,
+  },
+
+  -- Render Markdown headings, bullets and checkboxes inside Neovim
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      heading = {
+        enabled = true,
+        sign = true,
+        style = "full",
+        icons = { "① ", "② ", "③ ", "④ ", "⑤ ", "⑥ " },
+        left_pad = 1,
+      },
+      bullet = {
+        enabled = true,
+        icons = { "●", "○", "◆", "◇" },
+        right_pad = 1,
+      },
+      checkbox = {
+        enabled = true,
+        unchecked = { icon = "󰄱 " },
+        checked = { icon = "󰱒 " },
+        custom = {
+          todo = { raw = "[-]", rendered = "󰥔 " },
+        },
+      },
+    },
+  },
 
 
   -- A completion engine plugin 
