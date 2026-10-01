@@ -33,7 +33,7 @@ end, {
   complete = "file",
 })
 
-vim.api.nvim_create_user_command("LatexCompile", function()
+vim.api.nvim_create_user_command("LatexCompile", function(opts)
   local file = vim.fn.expand("%:p")
 
   if file == "" then
@@ -42,15 +42,19 @@ vim.api.nvim_create_user_command("LatexCompile", function()
   end
 
   local dir = vim.fn.fnamemodify(file, ":h")
-  local name = vim.fn.fnamemodify(file, ":t")
+  local current_name = vim.fn.fnamemodify(file, ":t")
 
-  vim.cmd("botright 15split")
-  vim.cmd("enew")
+  local name = opts.args ~= "" and opts.args or current_name
 
-  vim.fn.jobstart({ "lualatex", name }, {
-    term = true,
-    cwd = dir,
-  })
+  local cmd = string.format(
+    "cd %s && lualatex %s",
+    vim.fn.shellescape(dir),
+    vim.fn.shellescape(name)
+  )
+
+  vim.cmd("!" .. cmd)
 end, {
-  desc = "Compilar el archivo actual con LuaLaTeX",
+  nargs = "?",
+  complete = "file",
+  desc = "Compilar archivo con LuaLaTeX",
 })
