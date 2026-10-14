@@ -123,3 +123,5 @@ statushdd() {
   done
   unset hdd
 }
+
+setopt INTERACTIVE_COMMENTS
