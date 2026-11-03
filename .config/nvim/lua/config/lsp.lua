@@ -31,7 +31,7 @@ Normal mode:
   ]d            -> Next error
 
 Extra:
-  :LspInfo      -> View status of active LSPs
+  :checkhealth vim.lsp -> View status of active LSPs
   :HelpLSP      -> This message
   ]]
   vim.notify(ayuda, vim.log.levels.INFO, { title = "Ayuda LSP" })

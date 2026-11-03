@@ -125,6 +125,13 @@ require("lazy").setup({
     end
   },
 
+  -- Java LSP extensions; startup is configured in ftplugin/java.lua.
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" },
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+  },
+
   -- filetype and syntax plugin for LaTeX files. 
   -- For more info read .config/nvim/docs/plugins/VimTeX.md
    {
